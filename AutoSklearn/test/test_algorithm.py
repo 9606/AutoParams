@@ -7,6 +7,8 @@ import os
 import platform
 import subprocess
 import json
+import warnings
+warnings.filterwarnings("ignore")
 
 algor_label = "21001"
 other_params = "{\"fileType\":\"csv\", \"cluLabel\":false, \"naSymbol\":[\"NA\",\"?\"]}"

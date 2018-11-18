@@ -64,7 +64,7 @@ public class TaskService {
                     String pythonScriptPath = "/Users/enbo/IdeaProjects/AutoParams/AutoSklearn/src/main.py";
                     String pythonParams = algoName + " " + algoParams + " " + otherParams + " " + optAlgoName + " " + optAlgoParams;
 
-                    Process pr = Runtime.getRuntime().exec("python " + pythonScriptPath + " " + pythonParams);
+                    Process pr = Runtime.getRuntime().exec("python2 " + pythonScriptPath + " " + pythonParams);
                     TaskWebSocketHandler.setTaskRunning(userId, taskId);
 
                     allTaskDetail = new ConcurrentLinkedDeque<>();
