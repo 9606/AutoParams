@@ -1,0 +1,136 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:security="http://www.springframework.org/schema/security"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/security http://www.springframework.org/schema/security/spring-security.xsd">
+    <!--</context:component-scan>-->
+
+    <bean id="http403ForbiddenEntryPoint"
+          class="org.springframework.security.web.authentication.Http403ForbiddenEntryPoint"></bean>
+
+    <security:http pattern="/api/**" entry-point-ref="http403ForbiddenEntryPoint" use-expressions="true"
+                   authentication-manager-ref="authenticationManager">
+    </security:http>
+
+    <security:http entry-point-ref="authenticationEntryPoint" use-expressions="true">
+        <security:intercept-url pattern="/css/**" access="permitAll"/>
+        <security:intercept-url pattern="/js/**" access="permitAll"/>
+        <security:intercept-url pattern="/images/**" access="permitAll"/>
+        <security:intercept-url pattern="/fonts/**" access="permitAll"/>
+        <security:intercept-url pattern="/json/**" access="permitAll"/>
+        <security:intercept-url pattern="/lang/**" access="permitAll"/>
+        <security:intercept-url pattern="/less/**" access="permitAll"/>
+        <security:intercept-url pattern="/customJs/**" access="permitAll"/>
+        <security:intercept-url pattern="/favicon.ico" access="permitAll"/>
+        <security:intercept-url pattern="/setup**" access="permitAll"/>
+        <security:intercept-url pattern="/login/**" access="permitAll"/>
+        <security:intercept-url pattern="/CheckCode**" access="permitAll"/>
+
+
+        <!--控制页面显示-->
+        <security:intercept-url pattern="/task/submit" access="hasAuthority('submitTask')"/>
+        <security:intercept-url pattern="/task/submit/restart/{id}" access="hasAuthority('submitTask')"/>
+        <security:intercept-url pattern="/task/manage" access="hasAuthority('taskManage')"/>
+        <security:intercept-url pattern="/file/manage" access="hasAuthority('fileManage')"/>
+        <security:intercept-url pattern="/admin/user/manage" access="hasAuthority('userManage')"/>
+        <security:intercept-url pattern="/admin/role/list" access="hasAuthority('roleList')"/>
+
+
+        <!--控制API访问-->
+        <security:intercept-url pattern="/api/task/submit/start" access="hasAuthority('submitTask')"/>
+        <security:intercept-url pattern="/api/task/submit/webSocket/task/process" access="hasAuthority('submitTask')"/>
+        <security:intercept-url pattern="/api/task/submit/sockjs/task/process" access="hasAuthority('submitTask')"/>
+        <security:intercept-url pattern="/api/task/submit/upload/train" access="hasAuthority('submitTask')"/>
+        <security:intercept-url pattern="/api/task/submit/file/history" access="hasAuthority('submitTask')"/>
+        <security:intercept-url pattern="/api/task/submit/download/model" access="hasAuthority('submitTask')"/>
+        <security:intercept-url pattern="/api/task/manage/file/detail/{id}" access="hasAuthority('submitTask')"/>
+        <security:intercept-url pattern="/api/task/submit/params/{id}" access="hasAuthority('submitTask')"/>
+        <security:intercept-url pattern="/api/task/submit/running/task" access="hasAuthority('submitTask')"/>
+        <security:intercept-url pattern="/api/task/submit/task/detail/offline" access="hasAuthority('submitTask')"/>
+
+
+        <security:intercept-url pattern="/api/task/submit/algo/lib" access="hasAuthority('submitTask')"/>
+        <security:intercept-url pattern="/api/task/submit/algo/lib/type" access="hasAuthority('submitTask')"/>
+        <security:intercept-url pattern="/api/task/submit/algo/lib/type/names" access="hasAuthority('submitTask')"/>
+        <security:intercept-url pattern="/api/task/submit/algo/evaType" access="hasAuthority('submitTask')"/>
+        <security:intercept-url pattern="/api/task/submit/algo/params" access="hasAuthority('submitTask')"/>
+        <security:intercept-url pattern="/api/task/submit/opt/algo/names" access="hasAuthority('submitTask')"/>
+        <security:intercept-url pattern="/api/task/submit/opt/algo/params" access="hasAuthority('submitTask')"/>
+
+
+        <security:intercept-url pattern="/api/task/manage/list" access="hasAuthority('taskManage')"/>
+        <security:intercept-url pattern="/api/task/manage/detail/{id}" access="hasAuthority('taskManage')"/>
+        <security:intercept-url pattern="/api/task/manage/delete/{id}" access="hasAuthority('taskManage')"/>
+        <security:intercept-url pattern="/api/task/manage/delete/batch" access="hasAuthority('taskManage')"/>
+        <security:intercept-url pattern="/api/task/manage/download/model" access="hasAuthority('taskManage')"/>
+        <security:intercept-url pattern="/api/task/manage/download/file" access="hasAuthority('taskManage')"/>
+        <security:intercept-url pattern="/api/task/manage/restart/{id}" access="hasAuthority('taskManage')"/>
+
+        <security:intercept-url pattern="/api/file/upload/train" access="hasAuthority('fileManage')"/>
+        <security:intercept-url pattern="/api/file/list" access="hasAuthority('fileManage')"/>
+        <security:intercept-url pattern="/api/file/detail/{id}" access="hasAuthority('fileManage')"/>
+        <security:intercept-url pattern="/api/file/update" access="hasAuthority('fileManage')"/>
+        <security:intercept-url pattern="/api/file/download" access="hasAuthority('fileManage')"/>
+        <security:intercept-url pattern="/api/file/delete/{id}" access="hasAuthority('fileManage')"/>
+        <security:intercept-url pattern="/api/file/delete/batch" access="hasAuthority('fileManage')"/>
+
+        <security:intercept-url pattern="/api/user" access="hasAuthority('userManage')"/>
+        <security:intercept-url pattern="/api/user/detail/{id}" access="hasAuthority('userManage')"/>
+        <security:intercept-url pattern="/api/user/resetPassword" access="hasAuthority('userManage')"/>
+
+        <security:intercept-url pattern="/api/user/changeSelfPassword" access="hasAuthority('changeSelfPassword')"/>
+        <security:intercept-url pattern="/api/user/changeSelfInfo" access="hasAuthority('changeSelfInfo')"/>
+
+        <security:intercept-url pattern="/api/user/editState" access="hasAuthority('userManage')"/>
+        <security:intercept-url pattern="/api/role" access="hasAuthority('roleList')"/>
+        <security:intercept-url pattern="/api/role/{id}" access="hasAuthority('roleList')"/>
+
+        <security:intercept-url pattern="/api/permission/{id}" access="hasAnyAuthority('roleList','userManage')"/>
+        <security:intercept-url pattern="/api/permission" access="hasAuthority('roleList')"/>
+
+
+        <security:intercept-url pattern="/WEB-INF/resources/images" access="isAuthenticated()"/>
+
+        <security:logout invalidate-session="true" logout-success-url="/sign_in" logout-url="/logout"
+                         delete-cookies="JSESSIONID"/>
+
+        <security:custom-filter ref="checkCodeFilter" position="FORM_LOGIN_FILTER"/>
+
+    </security:http>
+    <security:authentication-manager alias="authenticationManager">
+        <security:authentication-provider user-service-ref="checkCodeUserService">
+            <!--<security:jdbc-user-service data-source-ref="dataSource"-->
+                                        <!--users-by-username-query="SELECT username,password,enabled FROM users WHERE username = ?"-->
+                                        <!--authorities-by-username-query="SELECT a.username, a.p_name FROM (SELECT DISTINCT a.username, e.p_name FROM users a,-->
+                                                                            <!--user_role_rela b,roles c,-->
+                                                                            <!--role_perm_rela d,-->
+                                                                            <!--permission e-->
+                                                                        <!--WHERE a.u_id = b.u_id-->
+                                                                            <!--AND b.r_id = c.r_id-->
+                                                                            <!--AND b.r_id = d.r_id-->
+                                                                            <!--AND d.p_id = e.p_id-->
+            <security:password-encoder ref="passwordEncoder"/>
+        </security:authentication-provider>
+    </security:authentication-manager>
+
+    <bean id="loginSuccessHandler" class="com.neu.autoparams.mvc.handler.LoginSuccessHandler"></bean>
+    <bean id="loginFailureHandler" class="com.neu.autoparams.mvc.handler.LoginFailureHandler"></bean>
+
+    <bean id="passwordEncoder" class="org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder"/>
+    <bean id="checkCodeFilter" class="com.neu.autoparams.mvc.filter.CheckCodeFilter">
+        <property name="authenticationManager" ref="authenticationManager"/>
+        <property name="authenticationSuccessHandler">
+            <bean class="org.springframework.security.web.authentication.SimpleUrlAuthenticationSuccessHandler">
+                <property name="defaultTargetUrl" value="/"></property>
+            </bean>
+        </property>
+        <property name="authenticationFailureHandler" ref="loginFailureHandler"></property>
+        <property name="filterProcessesUrl" value="/j_spring_security_check" />
+    </bean>
+    <bean id="authenticationEntryPoint" class="org.springframework.security.web.authentication.LoginUrlAuthenticationEntryPoint">
+        <constructor-arg name="loginFormUrl" value="/sign_in"></constructor-arg>
+        <property name="useForward" value="true"/>
+    </bean>
+    <bean id="checkCodeUserService" class="com.neu.autoparams.mvc.filter.CheckCodeUserService">
+    </bean>
+</beans>

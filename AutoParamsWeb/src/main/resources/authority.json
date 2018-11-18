@@ -1,0 +1,53 @@
+[
+  {
+    "name": "提交新任务",
+    "icon": "fa fa-circle-o",
+    "url": "/task/submit",
+    "permissions": [
+      "submitTask"
+    ],
+    "children": []
+  },
+  {
+    "name": "查看历史任务",
+    "icon": "fa fa-circle-o",
+    "url": "/task/manage",
+    "permissions": [
+      "taskManage"
+    ],
+    "children": []
+  },
+  {
+    "name": "数据管理",
+    "icon": "fa fa-circle-o",
+    "url": "/file/manage",
+    "permissions": ["fileManage"],
+    "children": []
+  },
+  {
+    "name": "权限管理",
+    "icon": "fa fa-circle-o",
+    "url": "",
+    "permissions": ["userManage", "roleList"],
+    "children": [
+      {
+        "name": "用户管理",
+        "icon": "",
+        "url": "/admin/user/manage",
+        "permissions": [
+          "userManage"
+        ],
+        "children": []
+      },
+      {
+        "name": "角色管理",
+        "icon": "",
+        "url": "/admin/role/list",
+        "permissions": [
+          "roleList"
+        ],
+        "children": []
+      }
+    ]
+  }
+]
