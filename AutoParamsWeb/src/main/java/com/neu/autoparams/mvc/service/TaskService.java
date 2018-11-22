@@ -61,10 +61,20 @@ public class TaskService {
         public void run() {
             try {
                 if (algoLib.equals("sklearn") || algoLib.equals("xgboost")) {
-                    String pythonScriptPath = "/Users/enbo/IdeaProjects/AutoParams/AutoSklearn/src/main.py";
+                    String pythonScriptPath;
+                    if(System.getProperty("os.name").toLowerCase().startsWith("win")){
+                        pythonScriptPath = "C:\\Users\\z00456052\\IdeaProjects\\AutoParams\\AutoSklearn\\src\\main.py";
+                    }else {
+                        pythonScriptPath = "/Users/enbo/IdeaProjects/AutoParams/AutoSklearn/src/main.py";
+                    }
                     String pythonParams = algoName + " " + algoParams + " " + otherParams + " " + optAlgoName + " " + optAlgoParams;
-
-                    Process pr = Runtime.getRuntime().exec("python2 " + pythonScriptPath + " " + pythonParams);
+                    String command = "python " + pythonScriptPath + " " + pythonParams;
+                    Process pr;
+                    if(System.getProperty("os.name").toLowerCase().startsWith("win")){
+                        pr = Runtime.getRuntime().exec(new String(command.replace("\"", "\"\"\"").getBytes(), "GBK"));
+                    }else {
+                        pr = Runtime.getRuntime().exec(command);
+                    }
                     TaskWebSocketHandler.setTaskRunning(userId, taskId);
 
                     allTaskDetail = new ConcurrentLinkedDeque<>();
