@@ -5,7 +5,8 @@ import numpy as np
 import logging
 import os
 import sys
-
+import warnings
+warnings.filterwarnings("ignore")
 
 def convert_params(dict_params):
     algorithm_params = {}

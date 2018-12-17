@@ -206,7 +206,7 @@ class XGBClassifierEvaluate(XGBEvaluate):
                 evaluate_result = classifier_evaluate(self.y_test, y_pred, self.class_name)
                 f1[i] = metrics.f1_score(self.y_test, y_pred, average='weighted')
                 if is_save:
-                    model_path = sys.path[0] + os.sep + str(uuid.uuid1())
+                    model_path = sys.path[0] + os.sep + "model" + os.sep + str(uuid.uuid1())
                     joblib.dump(rf, model_path)
 
             except Exception, e:

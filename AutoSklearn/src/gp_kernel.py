@@ -4,6 +4,9 @@ from algorithm import *
 import json
 from operator import itemgetter
 from sklearn import gaussian_process
+import warnings
+warnings.filterwarnings("ignore")
+
 gamma = 1.0
 zeta = 1.0
 

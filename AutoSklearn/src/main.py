@@ -3,6 +3,8 @@ from gp_kernel import get_algorithm
 import gp_kernel
 import sys
 import json
+import warnings
+warnings.filterwarnings("ignore")
 
 def main():
     # with open('C:\\Users\\akbbx\\PycharmProjects\\AutoParams\\algor_params.json', 'r') as load_f:

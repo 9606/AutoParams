@@ -233,7 +233,7 @@ CREATE TABLE `qrtz_job_details` (
 -- Dumping data for table `qrtz_job_details`
 --
 
-INSERT INTO `qrtz_job_details` VALUES ('mapScheduler','syncJobDetail','DEFAULT',NULL,'com.neu.autoparams.task.TaskQuartzJobBean','1','0','0','0',_binary '¬\í\0sr\0org.quartz.JobDataMapŸ°ƒè¿©°\Ë\0\0xr\0&org.quartz.utils.StringKeyDirtyFlagMap‚\è\Ãû\Å](\0Z\0allowsTransientDataxr\0org.quartz.utils.DirtyFlagMap\æ.­(v\n\Î\0Z\0dirtyL\0mapt\0Ljava/util/Map;xp\0sr\0java.util.HashMap\ÚÁ\Ã`\Ñ\0F\0\nloadFactorI\0	thresholdxp?@\0\0\0\0\0w\0\0\0\0\0\0\0x\0');
+INSERT INTO `qrtz_job_details` VALUES ('mapScheduler','syncJobDetail','DEFAULT',NULL,'com.neu.autoparams.task.TaskQuartzJobBean','1','0','0','0',_binary 'ï¿½\ï¿½\0sr\0org.quartz.JobDataMapï¿½ï¿½ï¿½è¿©ï¿½\ï¿½\0\0xr\0&org.quartz.utils.StringKeyDirtyFlagMapï¿½\ï¿½\ï¿½ï¿½\ï¿½](\0Z\0allowsTransientDataxr\0org.quartz.utils.DirtyFlagMap\ï¿½.ï¿½(v\n\ï¿½\0Z\0dirtyL\0mapt\0Ljava/util/Map;xp\0sr\0java.util.HashMap\ï¿½ï¿½\ï¿½`\ï¿½\0F\0\nloadFactorI\0	thresholdxp?@\0\0\0\0\0w\0\0\0\0\0\0\0x\0');
 
 --
 -- Table structure for table `qrtz_locks`
