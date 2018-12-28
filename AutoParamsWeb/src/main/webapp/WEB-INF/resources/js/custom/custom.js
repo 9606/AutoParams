@@ -195,8 +195,18 @@ function getCRTable(classification_report, className){
         if(value.replace(/\s/ig,'') != ''){
             var trimCRLinesWords = [];
             $.each(value.split(" "), function (vkey, vvalue) {
-                if (vvalue != '' && vvalue != 'avg' && vvalue != '/' && vvalue != 'total') {
-                    trimCRLinesWords.push(vvalue);
+                if (vvalue != '' && vvalue != 'avg' && vvalue != '/') {
+                    if (vvalue == 'total'){
+                        trimCRLinesWords.push('avg / total');
+                    }else if(vvalue == 'micro'){
+                        trimCRLinesWords.push('micro avg');
+                    }else if(vvalue == 'macro'){
+                        trimCRLinesWords.push('macro avg');
+                    }else if(vvalue == 'weighted'){
+                        trimCRLinesWords.push('weighted avg');
+                    }else {
+                        trimCRLinesWords.push(vvalue);
+                    }
                 }
             });
             trimCRLines.push(trimCRLinesWords);
@@ -210,17 +220,13 @@ function getCRTable(classification_report, className){
             $.each(value, function (vkey, vvalue) {
                 $headTr.append('<td>' + vvalue + '</td>');
             });
-        }
-        else if (key == trimCRLines.length - 1) {
-            var $tr = $('<tr></tr>');
-            $tr.append('<td>avg / total</td>');
-            $.each(value, function (vkey, vvalue) {
-                $tr.append('<td>' + vvalue + '</td>');
-            });
-            $tbody.append($tr);
         }else {
             var $tr = $('<tr></tr>');
-            $tr.append('<td>' + className[key - 1] + '</td>');
+            if (parseInt(value[0]).toString() == "NaN") {
+                $tr.append('<td>' + value[0] + '</td>');
+            }else {
+                $tr.append('<td>' + className[value[0]] + '</td>');
+            }
             $.each(value.slice(1), function (vkey, vvalue) {
                 $tr.append('<td>' + vvalue + '</td>');
             });
