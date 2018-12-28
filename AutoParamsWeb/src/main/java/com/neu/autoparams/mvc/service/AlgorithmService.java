@@ -1,7 +1,7 @@
 package com.neu.autoparams.mvc.service;
 
-import com.neu.autoparams.entity.Algorithm;
-import com.neu.autoparams.entity.OptAlgorithm;
+import com.neu.autoparams.mvc.entity.Algorithm;
+import com.neu.autoparams.mvc.entity.OptAlgorithm;
 import com.neu.autoparams.mvc.dao.AlgorithmDao;
 import org.springframework.stereotype.Service;
 

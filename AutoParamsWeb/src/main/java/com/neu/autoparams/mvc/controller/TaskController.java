@@ -1,8 +1,8 @@
 package com.neu.autoparams.mvc.controller;
 
-import com.neu.autoparams.entity.SubmitParams;
-import com.neu.autoparams.entity.Task;
-import com.neu.autoparams.entity.TaskDetail;
+import com.neu.autoparams.mvc.entity.SubmitParams;
+import com.neu.autoparams.mvc.entity.Task;
+import com.neu.autoparams.mvc.entity.TaskDetail;
 import com.neu.autoparams.mvc.service.TaskService;
 import com.neu.autoparams.util.GlobalResponseCode;
 import com.neu.autoparams.util.RestResponse;

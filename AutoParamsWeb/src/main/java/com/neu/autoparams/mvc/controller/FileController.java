@@ -1,25 +1,20 @@
 package com.neu.autoparams.mvc.controller;
 
 import java.io.*;
-import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
-import java.util.UUID;
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.neu.autoparams.mvc.model.FileMeta;
+import com.neu.autoparams.mvc.entity.FileMeta;
 import com.neu.autoparams.mvc.service.FileService;
-import com.neu.autoparams.util.ConfigurationUtil;
 import com.neu.autoparams.util.GlobalResponseCode;
 import com.neu.autoparams.util.RestResponse;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
-import org.springframework.util.FileCopyUtils;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
 
 

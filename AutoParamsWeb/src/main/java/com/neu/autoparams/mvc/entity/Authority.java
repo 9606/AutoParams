@@ -1,4 +1,4 @@
-package com.neu.autoparams.entity;
+package com.neu.autoparams.mvc.entity;
 
 import java.io.Serializable;
 

@@ -1,8 +1,8 @@
 package com.neu.autoparams.mvc.controller;
 
-import com.neu.autoparams.entity.Permission;
-import com.neu.autoparams.entity.Role;
-import com.neu.autoparams.entity.User;
+import com.neu.autoparams.mvc.entity.Permission;
+import com.neu.autoparams.mvc.entity.Role;
+import com.neu.autoparams.mvc.entity.User;
 import com.neu.autoparams.mvc.service.UserService;
 import com.neu.autoparams.util.GlobalResponseCode;
 import com.neu.autoparams.util.RestResponse;

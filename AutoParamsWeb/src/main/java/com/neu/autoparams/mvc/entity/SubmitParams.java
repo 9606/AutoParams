@@ -1,8 +1,7 @@
-package com.neu.autoparams.entity;
+package com.neu.autoparams.mvc.entity;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.neu.autoparams.mvc.model.FileMeta;
 import org.springframework.jdbc.core.RowMapper;
 
 public class SubmitParams {

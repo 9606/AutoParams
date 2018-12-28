@@ -1,9 +1,9 @@
 package com.neu.autoparams.mvc.dao;
 
-import com.neu.autoparams.entity.SubmitParams;
-import com.neu.autoparams.entity.Task;
-import com.neu.autoparams.entity.TaskDetail;
-import com.neu.autoparams.entity.TaskStatus;
+import com.neu.autoparams.mvc.entity.SubmitParams;
+import com.neu.autoparams.mvc.entity.Task;
+import com.neu.autoparams.mvc.entity.TaskDetail;
+import com.neu.autoparams.mvc.entity.TaskStatus;
 import org.springframework.dao.DataAccessException;
 import org.springframework.jdbc.core.BatchPreparedStatementSetter;
 import org.springframework.jdbc.core.JdbcTemplate;

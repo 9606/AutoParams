@@ -1,4 +1,4 @@
-package com.neu.autoparams.mvc.model;
+package com.neu.autoparams.mvc.entity;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import org.springframework.jdbc.core.RowMapper;

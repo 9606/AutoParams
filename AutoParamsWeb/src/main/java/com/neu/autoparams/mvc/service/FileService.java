@@ -1,7 +1,7 @@
 package com.neu.autoparams.mvc.service;
 
 import com.neu.autoparams.mvc.dao.FileDao;
-import com.neu.autoparams.mvc.model.FileMeta;
+import com.neu.autoparams.mvc.entity.FileMeta;
 import com.neu.autoparams.util.ConfigurationUtil;
 import org.springframework.stereotype.Service;
 import org.springframework.util.FileCopyUtils;

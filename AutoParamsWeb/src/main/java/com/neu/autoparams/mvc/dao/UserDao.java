@@ -1,8 +1,8 @@
 package com.neu.autoparams.mvc.dao;
 
-import com.neu.autoparams.entity.Permission;
-import com.neu.autoparams.entity.Role;
-import com.neu.autoparams.entity.User;
+import com.neu.autoparams.mvc.entity.Permission;
+import com.neu.autoparams.mvc.entity.Role;
+import com.neu.autoparams.mvc.entity.User;
 import org.springframework.jdbc.core.BatchPreparedStatementSetter;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.support.GeneratedKeyHolder;

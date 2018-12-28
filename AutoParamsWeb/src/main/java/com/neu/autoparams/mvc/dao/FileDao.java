@@ -1,6 +1,6 @@
 package com.neu.autoparams.mvc.dao;
 
-import com.neu.autoparams.mvc.model.FileMeta;
+import com.neu.autoparams.mvc.entity.FileMeta;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.support.GeneratedKeyHolder;
 import org.springframework.jdbc.support.KeyHolder;

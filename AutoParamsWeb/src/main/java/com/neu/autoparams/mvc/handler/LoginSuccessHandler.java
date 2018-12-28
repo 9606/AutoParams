@@ -1,7 +1,7 @@
 package com.neu.autoparams.mvc.handler;
 
-import com.neu.autoparams.entity.Authority;
-import com.neu.autoparams.entity.User;
+import com.neu.autoparams.mvc.entity.Authority;
+import com.neu.autoparams.mvc.entity.User;
 import com.neu.autoparams.mvc.service.UserService;
 import com.neu.autoparams.util.Definition;
 import org.springframework.security.core.Authentication;

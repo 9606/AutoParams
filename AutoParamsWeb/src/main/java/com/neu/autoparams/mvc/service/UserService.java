@@ -1,8 +1,8 @@
 package com.neu.autoparams.mvc.service;
 
-import com.neu.autoparams.entity.Permission;
-import com.neu.autoparams.entity.Role;
-import com.neu.autoparams.entity.User;
+import com.neu.autoparams.mvc.entity.Permission;
+import com.neu.autoparams.mvc.entity.Role;
+import com.neu.autoparams.mvc.entity.User;
 import com.neu.autoparams.mvc.dao.UserDao;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;

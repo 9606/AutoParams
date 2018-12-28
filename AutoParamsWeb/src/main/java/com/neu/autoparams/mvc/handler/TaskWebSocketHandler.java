@@ -2,8 +2,8 @@ package com.neu.autoparams.mvc.handler;
 
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.neu.autoparams.entity.Message;
-import com.neu.autoparams.entity.MessageType;
+import com.neu.autoparams.mvc.entity.Message;
+import com.neu.autoparams.mvc.entity.MessageType;
 import com.neu.autoparams.mvc.controller.SubmitTaskHandShakeInterceptor;
 import com.neu.autoparams.mvc.service.TaskService;
 import org.apache.commons.collections.keyvalue.DefaultMapEntry;

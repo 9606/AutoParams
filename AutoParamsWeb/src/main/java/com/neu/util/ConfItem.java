@@ -1,6 +1,6 @@
 package com.neu.util;
 
-import com.neu.autoparams.entity.AlgorithmParam;
+import com.neu.autoparams.mvc.entity.AlgorithmParam;
 import net.sf.json.JSONArray;
 
 import java.util.ArrayList;

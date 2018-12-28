@@ -1,4 +1,4 @@
-package com.neu.autoparams.entity;
+package com.neu.autoparams.mvc.entity;
 
 import org.springframework.jdbc.core.RowMapper;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
@@ -184,7 +184,7 @@ public class User {
     }
 
     public static void main(String[] args) {
-        String pass = "admin";
+        String pass = "zhangenbo1996";
         BCryptPasswordEncoder encode = new BCryptPasswordEncoder();
         String hashPass = encode.encode(pass);
         System.out.println(hashPass);

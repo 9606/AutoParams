@@ -1,6 +1,6 @@
 package com.neu.util;
 
-import com.neu.autoparams.entity.AlgorithmParam;
+import com.neu.autoparams.mvc.entity.AlgorithmParam;
 
 import java.io.FileNotFoundException;
 import java.io.FileWriter;

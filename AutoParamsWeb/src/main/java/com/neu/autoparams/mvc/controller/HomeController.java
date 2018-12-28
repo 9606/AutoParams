@@ -1,7 +1,6 @@
 package com.neu.autoparams.mvc.controller;
 
-import com.neu.autoparams.entity.User;
-import com.neu.autoparams.mvc.handler.LoginFailureHandler;
+import com.neu.autoparams.mvc.entity.User;
 import com.neu.autoparams.mvc.handler.LoginSuccessHandler;
 import com.neu.autoparams.mvc.service.UserService;
 import org.slf4j.Logger;

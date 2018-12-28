@@ -1,6 +1,7 @@
 package com.neu.autoparams.mvc.controller;
 
-import com.neu.autoparams.entity.*;
+import com.neu.autoparams.mvc.entity.Algorithm;
+import com.neu.autoparams.mvc.entity.OptAlgorithm;
 import com.neu.autoparams.mvc.service.AlgorithmService;
 import com.neu.autoparams.util.GlobalResponseCode;
 import com.neu.autoparams.util.RestResponse;
