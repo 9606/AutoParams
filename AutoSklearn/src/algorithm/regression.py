@@ -167,7 +167,7 @@ class RegressionEvaluate(object):
                 lr = lr.fit(self.x_train, self.y_train)
                 y_pred = lr.predict(self.x_test)
                 evaluate_result = regression_evaluate(self.y_test, y_pred, self.log)
-                mse[i] = 0 - metrics.mean_squared_error(self.y_test, y_pred)
+                mse[i] = metrics.mean_squared_error(self.y_test, y_pred)
                 if is_save:
                     model_path = sys.path[0] + os.sep + "model" + os.sep + str(uuid.uuid1())
                     joblib.dump(lr, model_path)

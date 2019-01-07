@@ -1,6 +1,6 @@
 # -*- coding: UTF-8 -*-
-from gp_kernel import get_algorithm
-import gp_kernel
+from bayesian_optimization import get_algorithm
+import bayesian_optimization as bo
 import sys
 import json
 import warnings
@@ -17,17 +17,20 @@ def main():
     # sys.argv[0] is the name of module
     algorithm = get_algorithm(sys.argv[1], sys.argv[2], sys.argv[3])
     if sys.argv[4] == 'Bayesian_Optimization':
-        loop = 100
+        loop = 50
         random_choice = 5
         count = 1
+        ac_func = 'upper_confidence_bound'
         for param in json.loads(sys.argv[5]):
             if param['name'] == 'bo_loop':
                 loop = param['val']
-            if param['name'] == 'bo_random_choice':
+            elif param['name'] == 'bo_random_choice':
                 random_choice = param['val']
-            if param['name'] == 'bo_count':
+            elif param['name'] == 'bo_count':
                 count = param['val']
-        gp_kernel.run(algorithm, loop, random_choice, count)
+            elif param['name'] == 'bo_ac_func':
+                ac_func = param['val']
+        bo.run(algorithm, loop, random_choice, count, ac_func)
 
 
 if __name__ == '__main__':
