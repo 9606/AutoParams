@@ -4,6 +4,7 @@ from algorithm import *
 import json
 from operator import itemgetter
 from sklearn import gaussian_process
+from sklearn.gaussian_process.kernels import Matern
 import warnings
 warnings.filterwarnings("ignore")
 
@@ -105,13 +106,13 @@ def sklearn_gpr_pred_result(param_array, train_dic, logger):
             test_X.append(param_array[i])
             test_X_index.append(i)
 
-
-    gpr = gaussian_process.GaussianProcessRegressor().fit(train_X, train_Y)
+    kernel = Matern(length_scale=1.0, length_scale_bounds=(1e-1, 10.0), nu=2.5)
+    gpr = gaussian_process.GaussianProcessRegressor(kernel=kernel).fit(train_X, train_Y)
     # y_pred, cov_pred = gpr.predict(test_X, return_std=False, return_cov=True)
     y_pred, std_pred = gpr.predict(test_X, return_std=True, return_cov=False)
 
     for i, ele in enumerate(y_pred):
-            pred[test_X_index[i]] = std_pred[i] * 1.96 + ele
+            pred[test_X_index[i]] = ele + std_pred[i] * 1.96
     return pred
 
 
