@@ -9,7 +9,7 @@
 
     <bean id="syncJobDetail" class="org.springframework.scheduling.quartz.JobDetailFactoryBean">
         <property name="durability" value="true"/>
-        <property name="jobClass" value="com.neu.autoparams.task.TaskQuartzJobBean"/>
+        <property name="jobClass" value="com.neu.autoparams.mvc.service.TaskQuartzJobBean"/>
     </bean>
 
 
