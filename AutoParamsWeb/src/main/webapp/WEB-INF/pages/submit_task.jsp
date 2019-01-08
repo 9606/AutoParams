@@ -213,7 +213,7 @@
                                         </div>
 
                                         <div class="row" style="margin-top: 20px;" id="opt-algo-div">
-                                            <div class="form-group">
+                                            <div class="form-group" id="opt-algo-fg">
                                                 <label class="col-md-2 control-label">
                                                     <span class="text-success">*</span>&nbsp调参算法：
                                                 </label>
@@ -388,8 +388,14 @@
         // 更新数值优化算法参数
         newOptAlgoParams = $.parseJSON(optAlgoParams);
         $.each(newOptAlgoParams, function (idx, obj) {
-            var newVal = $('#' + obj.name).val();
-            newOptAlgoParams[idx].val = newVal == '' ? obj.val : obj.isNumber ? Number(newVal) : newVal;
+            if (obj.type == 'int'){
+                var newVal = $('#' + obj.name).val();
+                newOptAlgoParams[idx].val = newVal == '' ? obj.val : Number(newVal);
+            } else if (obj.type == 'string'){
+                var newVal = $('#' + obj.name).find("option:selected").text();
+                newOptAlgoParams[idx].val = newVal == '' ? obj.val : newVal;
+            }
+
         });
 
         var algoType = $("#algo-type").find("option:selected").text();

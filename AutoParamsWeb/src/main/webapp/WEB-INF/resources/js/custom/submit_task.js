@@ -291,7 +291,6 @@ function checkAndStartTask(){
 
 }
 function startTask() {
-
     var data = {
         'algoId': algoId,
         'algoLib': algoLib,
@@ -333,7 +332,7 @@ function addOptAlgoHtml(param){
     var optParamsHtml =
         '<div class="form-group">' +
             '<label class="col-md-2 control-label">' +
-                '<span class="text-success">*</span>&nbsp优化算法属性：' +
+                '<span class="text-success">*</span>&nbsp调参算法属性：' +
             '</label>';
     $.each(param, function (key, value) {
         if (key%3 == 0 && key > 0){
@@ -343,16 +342,34 @@ function addOptAlgoHtml(param){
             optParamsHtml +=
                 '<div class="col-md-3" style="margin-bottom: 20px;">';
         }
-        optParamsHtml +=
+        if (value.type == 'int'){
+            optParamsHtml +=
                 '<input type="text" style="width: 75%;" id="' + value.name + '" name="' + value.name + '" ' +
-                    'class="form-control" placeholder="默认' + value.placeholder + '：' + value.val + '">' +
-            '</div>';
+                'class="form-control" placeholder="默认' + value.placeholder + '：' + value.val + '">';
+        } else if (value.type == 'string'){
+            optParamsHtml +=
+                '<select id="' + value.name + '" class="form-control" style="width: 75%">' +
+                '  <option></option>';
+            $.each(value.range, function (vkey, vvalue) {
+                optParamsHtml += '<option>' + vvalue + '</option>';
+            });
+            optParamsHtml += '</select>';
+
+        }
+        optParamsHtml +='</div>';
     });
     optParamsHtml += '</div>';
-    $('#opt-algo-params-div').empty();
-    $('#opt-algo-params-div').append(optParamsHtml);
-    $('#opt-algo-params-div').attr('style','margin-top: 20px;');
 
+    $('#opt-algo-params-div').empty().append(optParamsHtml).attr('style','margin-top: 20px;');
+    $.each(param, function (key, value) {
+        if (value.type == 'string'){
+            $('#'+ value.name).select2({
+                placeholder: '默认' + value.placeholder + '：' + value.val,
+                language: "zh-CN",
+                minimumResultsForSearch: 10
+            });
+        }
+    });
 }
 
 function initSelect2() {
@@ -669,8 +686,6 @@ function changeAlgoType() {
             }
         });
     }
-
-
 }
 
 function showHistory(){

@@ -2,6 +2,7 @@
 from bayesian_optimization import get_algorithm
 import bayesian_optimization as bo
 import sys
+import platform
 import json
 import warnings
 warnings.filterwarnings("ignore")
@@ -17,11 +18,13 @@ def main():
     # sys.argv[0] is the name of module
     algorithm = get_algorithm(sys.argv[1], sys.argv[2], sys.argv[3])
     if sys.argv[4] == 'Bayesian_Optimization':
-        loop = 50
-        random_choice = 5
-        count = 1
-        ac_func = 'upper_confidence_bound'
-        for param in json.loads(sys.argv[5]):
+
+        if platform.system() == "Windows":
+            bo_params = sys.argv[5].decode('gbk').encode('utf-8')
+        else:
+            bo_params = sys.argv[5]
+
+        for param in json.loads(bo_params):
             if param['name'] == 'bo_loop':
                 loop = param['val']
             elif param['name'] == 'bo_random_choice':

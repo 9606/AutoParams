@@ -71,7 +71,7 @@ public class TaskService {
                     String command = "python " + pythonScriptPath + " " + pythonParams;
                     Process pr;
                     if(System.getProperty("os.name").toLowerCase().startsWith("win")){
-                        pr = Runtime.getRuntime().exec(new String(command.replace("\"", "\"\"\"").getBytes(), "GBK"));
+                        pr = Runtime.getRuntime().exec(new String(command.replace("\"", "\"\"\"").getBytes("GBK"), "GBK"));
                     }else {
                         pr = Runtime.getRuntime().exec(command);
                     }

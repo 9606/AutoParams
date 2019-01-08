@@ -96,8 +96,7 @@ CREATE TABLE `opt_algorithm` (
 --
 -- Dumping data for table `opt_algorithm`
 --
-
-INSERT INTO `opt_algorithm` VALUES (1,'Bayesian_Optimization','[{\"name\":\"bo_loop\", \"val\":10, \"placeholder\":\"迭代次数\", \"isNumber\":true}, {\"name\":\"bo_random_choice\", \"val\":5, \"placeholder\":\"先验个数\", \"isNumber\":true}, {\"name\":\"bo_count\", \"val\":10, \"placeholder\":\"迭代选择个数\", \"isNumber\":true}]');
+INSERT INTO auto_params.opt_algorithm (opt_algo_id, opt_algo_name, default_params) VALUES (1, 'Bayesian_Optimization', '[{"name":"bo_loop", "val":50, "placeholder":"迭代次数", "type": "int", "range": "[0,+∞)"}, {"name":"bo_random_choice", "val":5, "placeholder":"先验个数", "type": "int", "range": "[0,+∞)"}, {"name":"bo_count", "val":1, "placeholder":"迭代选择个数", "type": "int", "range": "[0,+∞)"}, {"name":"bo_gp_kenel_func", "val":"ARD_Matern_5/2", "placeholder":"高斯核", "type": "string", "range": ["ARD_Matern_5/2"]}, {"name":"bo_ac_func", "val":"expected_improvement", "placeholder":"获取函数", "type": "string", "range": ["expected_improvement", "upper_confidence_bound"]}]');
 
 --
 -- Table structure for table `permission`
