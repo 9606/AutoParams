@@ -62,10 +62,11 @@ public class TaskService {
             try {
                 if (algoLib.equals("sklearn") || algoLib.equals("xgboost")) {
                     String pythonScriptPath;
+                    String userHome = System.getProperty("user.home");
                     if(System.getProperty("os.name").toLowerCase().startsWith("win")){
-                        pythonScriptPath = "C:\\Users\\z00456052\\IdeaProjects\\AutoParams\\AutoSklearn\\src\\main.py";
+                        pythonScriptPath = userHome + "\\IdeaProjects\\AutoParams\\AutoSklearn\\src\\main.py";
                     }else {
-                        pythonScriptPath = "/Users/enbo/IdeaProjects/AutoParams/AutoSklearn/src/main.py";
+                        pythonScriptPath = userHome + "/IdeaProjects/AutoParams/AutoSklearn/src/main.py";
                     }
                     String pythonParams = algoName + " " + algoParams + " " + otherParams + " " + optAlgoName + " " + optAlgoParams;
                     String command = "python " + pythonScriptPath + " " + pythonParams;
