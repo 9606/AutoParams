@@ -1,5 +1,4 @@
-# Created by .ignore support plugin (hsz.mobi)
-### Java template
+### Java
 # Compiled class file
 *.class
 
@@ -23,7 +22,8 @@
 
 # virtual machine crash logs, see http://www.java.com/en/download/help/error_hotspot.xml
 hs_err_pid*
-### Maven template
+
+### Maven
 target/
 pom.xml.tag
 pom.xml.releaseBackup
@@ -36,6 +36,7 @@ buildNumber.properties
 
 # Avoid ignoring Maven wrapper jar file (.jar files are usually ignored)
 !/.mvn/wrapper/maven-wrapper.jar
+
 ### Python template
 # Byte-compiled / optimized / DLL files
 __pycache__/
@@ -51,8 +52,11 @@ __pycache__/
 # pyenv
 .python-version
 
+### Idea Project Files
+*.iml
 /.idea/
 
+#### AutoParams Files
 /AutoParamsWeb/fileTmpDir/
 /AutoParamsWeb/logs/
 /AutoSklearn/src/model/
