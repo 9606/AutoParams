@@ -39,14 +39,6 @@ public class HomeController {
     public String getIndex() {
         return "index";
     }
-    @RequestMapping(value = "/login1", method = RequestMethod.GET)
-    public String getLogin1() {
-        return "login1";
-    }
-    @RequestMapping(value = "/register", method = RequestMethod.GET)
-    public String getRegister() {
-        return "register";
-    }
     @RequestMapping(value = "/sign_in", method = RequestMethod.GET)
     public String geSignIn(HttpServletRequest request, HttpServletResponse response) {
         if (request.getSession().getAttribute("failure-time") == null){
