@@ -1,6 +1,7 @@
 package com.neu.autoparams.mvc.controller;
 
-import org.apache.log4j.Logger;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.http.server.ServerHttpRequest;
 import org.springframework.http.server.ServerHttpResponse;
 import org.springframework.http.server.ServletServerHttpRequest;
@@ -13,7 +14,7 @@ import java.util.Map;
 
 public class SubmitTaskHandShakeInterceptor implements HandshakeInterceptor {
 
-    private static Logger logger = Logger.getLogger(SubmitTaskHandShakeInterceptor.class);
+    private static Logger logger = LoggerFactory.getLogger(SubmitTaskHandShakeInterceptor.class);
 
     @Override
     public boolean beforeHandshake(ServerHttpRequest serverHttpRequest, ServerHttpResponse serverHttpResponse,

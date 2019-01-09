@@ -31,7 +31,7 @@
             </div>
         </h4>
         <div class="js-sign-in-container">
-            <form id="new_session" action="/j_spring_security_check" method="post" accept-charset="UTF-8">
+            <form id="new_session" action="/login" method="post" accept-charset="UTF-8">
                 <div class="row" id="checkCode-error" style="display: none;">
                     <div class="alert alert-danger">登录失败! 验证码错误！</div>
                 </div>
@@ -41,7 +41,7 @@
 
                 <!-- 正常登录登录名输入框 -->
                 <div class="input-prepend restyle js-normal">
-                    <input placeholder="手机号或邮箱或用户名" type="text" name="j_username"
+                    <input placeholder="手机号或邮箱或用户名" type="text" name="username"
                            id="session_email_or_mobile_number">
                     <i class="iconfont ic-user"></i>
                 </div>
@@ -49,14 +49,14 @@
                 <c:choose>
                     <c:when test="${pageContext.session.getAttribute('need-check')}">
                         <div class="input-prepend restyle no-radius js-normal">
-                            <input placeholder="密码" type="password" name="j_password" id="session_password">
+                            <input placeholder="密码" type="password" name="password" id="session_password">
                             <i class="iconfont ic-password"></i>
                         </div>
                         <div id="check_code_div" class="input-prepend">
                     </c:when>
                     <c:otherwise>
                         <div id="password_div" class="input-prepend">
-                            <input placeholder="密码" type="password" name="j_password" id="session_password">
+                            <input placeholder="密码" type="password" name="password" id="session_password">
                             <i class="iconfont ic-password"></i>
                         </div>
                         <div id="check_code_div" class="input-prepend" style="display: none;">
@@ -86,6 +86,7 @@
                     <span id="sign-in-loading"></span>
                     登录
                 </button>
+
             </form>
             <!-- 更多登录方式 -->
             <div class="more-sign">

@@ -51,26 +51,26 @@ public class CheckCodeUserService implements UserDetailsService {
     @Override
     public UserDetails loadUserByUsername(String userIdentifier) throws UsernameNotFoundException {
         List<UserDetails> users;
-        if (Pattern.matches(telPattern, userIdentifier)){
+        if (Pattern.matches(telPattern, userIdentifier)) {
             users = this.loadUsers(userIdentifier, usersByTelQuery);
             if (users.size() == 0) {
                 this.logger.debug("Query returned no results for user '" + userIdentifier + "'");
-                throw new UserTelNotFoundException(this.messages.getMessage("JdbcDaoImpl.notFound", new Object[]{userIdentifier}, "UserTelephone {0} not found"), userIdentifier);
+                throw new UserTelNotFoundException(this.messages.getMessage("JdbcDaoImpl.notFound", new Object[]{userIdentifier}, "UserTelephone {0} not found"));
             }
-        }else if(Pattern.matches(emailPattern, userIdentifier)){
+        } else if (Pattern.matches(emailPattern, userIdentifier)) {
             users = this.loadUsers(userIdentifier, usersByEmailQuery);
             if (users.size() == 0) {
                 this.logger.debug("Query returned no results for user '" + userIdentifier + "'");
-                throw new UserEmailNotFoundException(this.messages.getMessage("JdbcDaoImpl.notFound", new Object[]{userIdentifier}, "UserEmail {0} not found"), userIdentifier);
+                throw new UserEmailNotFoundException(this.messages.getMessage("JdbcDaoImpl.notFound", new Object[]{userIdentifier}, "UserEmail {0} not found"));
             }
-        }else {
+        } else {
             users = this.loadUsers(userIdentifier, usersByUsernameQuery);
             if (users.size() == 0) {
                 this.logger.debug("Query returned no results for user '" + userIdentifier + "'");
-                throw new UsernameNotFoundException(this.messages.getMessage("JdbcDaoImpl.notFound", new Object[]{userIdentifier}, "Username {0} not found"), userIdentifier);
+                throw new UsernameNotFoundException(this.messages.getMessage("JdbcDaoImpl.notFound", new Object[]{userIdentifier}, "Username {0} not found"));
             }
         }
-        UserDetails user = (UserDetails)users.get(0);
+        UserDetails user = (UserDetails) users.get(0);
         Set<GrantedAuthority> dbAuthsSet = new HashSet();
         if (this.enableAuthorities) {
             dbAuthsSet.addAll(this.loadUserAuthorities(user.getUsername()));
@@ -79,7 +79,7 @@ public class CheckCodeUserService implements UserDetailsService {
         List<GrantedAuthority> dbAuths = new ArrayList(dbAuthsSet);
         if (dbAuths.size() == 0) {
             this.logger.debug("User '" + userIdentifier + "' has no authorities and will be treated as 'not found'");
-            throw new UsernameNotFoundException(this.messages.getMessage("JdbcDaoImpl.noAuthority", new Object[]{userIdentifier}, "User {0} has no GrantedAuthority"), userIdentifier);
+            throw new UsernameNotFoundException(this.messages.getMessage("JdbcDaoImpl.noAuthority", new Object[]{userIdentifier}, "User {0} has no GrantedAuthority"));
         } else {
             return this.createUserDetails(user.getUsername(), user, dbAuths);
         }

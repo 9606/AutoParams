@@ -7,7 +7,8 @@ import com.neu.autoparams.mvc.entity.MessageType;
 import com.neu.autoparams.mvc.controller.SubmitTaskHandShakeInterceptor;
 import com.neu.autoparams.mvc.service.TaskService;
 import org.apache.commons.collections.keyvalue.DefaultMapEntry;
-import org.apache.log4j.Logger;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Component;
 import org.springframework.web.socket.*;
 
@@ -26,7 +27,7 @@ public class TaskWebSocketHandler implements WebSocketHandler {
     @Resource
     TaskService taskService;
 
-    private static Logger logger = Logger.getLogger(SubmitTaskHandShakeInterceptor.class);
+    private static Logger logger = LoggerFactory.getLogger(SubmitTaskHandShakeInterceptor.class);
     private static final Map<Integer, WebSocketSession> userSocketSessionMap;
     private static final Map<Integer, WebSocketSession> taskSocketSessionMap;
     private static final ConcurrentLinkedQueue<Map.Entry<WebSocketSession, String>> taskProcessQueue;

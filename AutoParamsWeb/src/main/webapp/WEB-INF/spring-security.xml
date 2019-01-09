@@ -12,6 +12,11 @@
                    authentication-manager-ref="authenticationManager">
     </security:http>
 
+    <bean id="authenticationEntryPoint" class="org.springframework.security.web.authentication.LoginUrlAuthenticationEntryPoint">
+        <constructor-arg name="loginFormUrl" value="/sign_in"></constructor-arg>
+        <property name="useForward" value="true"/>
+    </bean>
+
     <security:http entry-point-ref="authenticationEntryPoint" use-expressions="true">
         <security:intercept-url pattern="/css/**" access="permitAll"/>
         <security:intercept-url pattern="/js/**" access="permitAll"/>
@@ -22,10 +27,9 @@
         <security:intercept-url pattern="/less/**" access="permitAll"/>
         <security:intercept-url pattern="/customJs/**" access="permitAll"/>
         <security:intercept-url pattern="/favicon.ico" access="permitAll"/>
-        <security:intercept-url pattern="/setup**" access="permitAll"/>
-        <security:intercept-url pattern="/login/**" access="permitAll"/>
         <security:intercept-url pattern="/CheckCode**" access="permitAll"/>
 
+        <security:intercept-url pattern="/sign_in" access="permitAll"/>
 
         <!--控制页面显示-->
         <security:intercept-url pattern="/task/submit" access="hasAuthority('submitTask')"/>
@@ -97,6 +101,10 @@
         <security:custom-filter ref="checkCodeFilter" position="FORM_LOGIN_FILTER"/>
 
     </security:http>
+
+    <bean id="passwordEncoder" class="org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder"/>
+    <bean id="checkCodeUserService" class="com.neu.autoparams.mvc.filter.CheckCodeUserService"></bean>
+
     <security:authentication-manager alias="authenticationManager">
         <security:authentication-provider user-service-ref="checkCodeUserService">
             <security:password-encoder ref="passwordEncoder"/>
@@ -106,8 +114,8 @@
     <bean id="loginSuccessHandler" class="com.neu.autoparams.mvc.handler.LoginSuccessHandler"></bean>
     <bean id="loginFailureHandler" class="com.neu.autoparams.mvc.handler.LoginFailureHandler"></bean>
 
-    <bean id="passwordEncoder" class="org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder"/>
     <bean id="checkCodeFilter" class="com.neu.autoparams.mvc.filter.CheckCodeFilter">
+        <property name="filterProcessesUrl" value="/login" />
         <property name="authenticationManager" ref="authenticationManager"/>
         <property name="authenticationSuccessHandler">
             <bean class="org.springframework.security.web.authentication.SimpleUrlAuthenticationSuccessHandler">
@@ -115,12 +123,6 @@
             </bean>
         </property>
         <property name="authenticationFailureHandler" ref="loginFailureHandler"></property>
-        <property name="filterProcessesUrl" value="/j_spring_security_check" />
     </bean>
-    <bean id="authenticationEntryPoint" class="org.springframework.security.web.authentication.LoginUrlAuthenticationEntryPoint">
-        <constructor-arg name="loginFormUrl" value="/sign_in"></constructor-arg>
-        <property name="useForward" value="true"/>
-    </bean>
-    <bean id="checkCodeUserService" class="com.neu.autoparams.mvc.filter.CheckCodeUserService">
-    </bean>
+
 </beans>
