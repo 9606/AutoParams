@@ -10,6 +10,9 @@
 
     <security:http pattern="/api/**" entry-point-ref="http403ForbiddenEntryPoint" use-expressions="true"
                    authentication-manager-ref="authenticationManager">
+
+        <security:csrf disabled="true" />
+
     </security:http>
 
     <bean id="authenticationEntryPoint" class="org.springframework.security.web.authentication.LoginUrlAuthenticationEntryPoint">
